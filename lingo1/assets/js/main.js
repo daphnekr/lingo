@@ -19,22 +19,23 @@ function check(){
         button.setAttribute("onclick", "playAgain()");
         button.style.background = "rgb(128, 255, 96)";
     }
-    var input;
     for(var i = 0; i < 5; i++){
         input = document.getElementById("letter"+row+"-"+i);
-        console.log(input.value);
-        if(input.value === ""){
+        word = input.value;
+        console.log(word);
+        if(word === ""){
             text.innerHTML = "Voer iets in";
             return;
         }
 
-        if(res.includes(input.value)){
+        if(res.includes(word)){
             input.style.backgroundColor = "yellow";
-            input.style.borderRadius = "15px";
+            input.style.borderRadius = "30px";
             text.innerHTML = "";
         }
-        if(input.value === res[i]){
-            input.style.backgroundColor = "red";
+
+        if(word === res[i]){
+            input.style.backgroundColor = "green";
             input.style.borderRadius = "0px";
             text.innerHTML = "";
         }
@@ -42,24 +43,25 @@ function check(){
     }
 
     console.log(res);
-    var checkWord = true;
+    var checkWord = 0;
 
 	for (var i = 0 ; i < 5; i++){
         input = document.getElementById('letter'+row+'-'+i);
-        console.log(input.value);
-		if (input.value != res[i]){
-            checkWord = false;
+        word = input.value;
+        console.log(word);
+		if (word != res[i]){
+            checkWord = 1;
         }
     }
     
-    if(checkWord){
+    if(checkWord == 0){
         text.innerHTML = "Je hebt het woord geraden! Gefeliciteerd. Speel opnieuw."
         button.innerHTML = "Speel opnieuw";
         button.setAttribute("onclick", "playAgain()");
         button.style.background = "rgb(128, 255, 96)";
     }
     row++;
-    if(checkWord==false){
+    if(checkWord == 1){
         document.getElementById('letter'+row+'-0').value = first;
     }
 }
