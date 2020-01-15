@@ -2,7 +2,7 @@ var random  = Math.floor(Math.random() * words.length);
 var answer = words[random];
 var row = 0;
 var first = answer.charAt(0);
-var res = answer.split("");
+var split = answer.split("");
 var input = document.getElementsByTagName("input");
 var text = document.getElementsByTagName("p")[0];
 var button = document.getElementById("check");
@@ -22,19 +22,18 @@ function check(){
     for(var i = 0; i < 5; i++){
         input = document.getElementById("letter"+row+"-"+i);
         word = input.value;
-        console.log(word);
         if(word === ""){
             text.innerHTML = "Voer iets in";
             return;
         }
 
-        if(res.includes(word)){
+        if(split.includes(word)){
             input.style.backgroundColor = "yellow";
             input.style.borderRadius = "30px";
             text.innerHTML = "";
         }
 
-        if(word === res[i]){
+        if(word === split[i]){
             input.style.backgroundColor = "green";
             input.style.borderRadius = "0px";
             text.innerHTML = "";
@@ -42,14 +41,13 @@ function check(){
         
     }
 
-    console.log(res);
     var checkWord = 0;
 
 	for (var i = 0 ; i < 5; i++){
         input = document.getElementById('letter'+row+'-'+i);
         word = input.value;
         console.log(word);
-		if (word != res[i]){
+		if (word != split[i]){
             checkWord = 1;
         }
     }
