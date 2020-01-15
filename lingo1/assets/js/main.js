@@ -19,6 +19,20 @@ function check(){
         button.setAttribute("onclick", "playAgain()");
         button.style.background = "rgb(128, 255, 96)";
     }
+
+    letter2input = document.getElementById("letter"+row+"-1");
+    letter2 = letter2input.value
+    letter3input = document.getElementById("letter"+row+"-2");
+    letter3 = letter3input.value
+    letter4input = document.getElementById("letter"+row+"-3");
+    letter4 = letter4input.value
+    letter5input = document.getElementById("letter"+row+"-4");
+    letter5 = letter5input.value
+
+    var guessWord = first + letter2+ letter3 + letter4 + letter5;
+    var guessWord2 = guessWord.split("");
+    console.log(guessWord2);
+    
     for(var i = 0; i < 5; i++){
         input = document.getElementById("letter"+row+"-"+i);
         word = input.value;
@@ -27,18 +41,21 @@ function check(){
             return;
         }
 
-        if(split.includes(word)){
-            input.style.backgroundColor = "yellow";
-            input.style.borderRadius = "30px";
-            text.innerHTML = "";
-        }
-
-        if(word === split[i]){
+        if(guessWord2[i] === split[i]){
             input.style.backgroundColor = "green";
             input.style.borderRadius = "0px";
             text.innerHTML = "";
+            input.innerText = guessWord[i];
+            guessWord2[i] = null;
+            console.log(guessWord2[i]);
         }
-        
+
+        if(split.indexOf(guessWord2[i]) != -1){
+            input.style.backgroundColor = "yellow";
+            input.style.borderRadius = "30px";
+            text.innerHTML = "";
+            console.log("hallo")
+        }
     }
 
     var checkWord = 0;
@@ -46,7 +63,6 @@ function check(){
 	for (var i = 0 ; i < 5; i++){
         input = document.getElementById('letter'+row+'-'+i);
         word = input.value;
-        console.log(word);
 		if (word != split[i]){
             checkWord = 1;
         }
