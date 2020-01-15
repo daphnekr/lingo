@@ -1,5 +1,3 @@
-
-
 for(var row = 0; row < 5; row++){
     var row1 = document.createElement("div");
     row1.setAttribute("id", "row+"+row);
