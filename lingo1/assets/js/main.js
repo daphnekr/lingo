@@ -13,13 +13,7 @@ function start() {
 start();
 console.log(answer);
 function check(){
-    if (row == 5){
-        text.innerHTML = "Je hebt het woord niet geraden. Het juiste woord was: "+ answer + ". Speel opnieuw."
-        button.innerHTML = "Speel opnieuw";
-        button.setAttribute("onclick", "playAgain()");
-        button.style.background = "rgb(128, 255, 96)";
-    }
-
+    split = answer.split("");
     letter2input = document.getElementById("letter"+row+"-1");
     letter2 = letter2input.value
     letter3input = document.getElementById("letter"+row+"-2");
@@ -32,6 +26,13 @@ function check(){
     var guessWord = first + letter2+ letter3 + letter4 + letter5;
     var guessWord2 = guessWord.split("");
     console.log(guessWord2);
+
+    if (row == 5){
+        text.innerHTML = "Je hebt het woord niet geraden. Het juiste woord was: "+ answer + ". Speel opnieuw."
+        button.innerHTML = "Speel opnieuw";
+        button.setAttribute("onclick", "playAgain()");
+        button.style.background = "rgb(128, 255, 96)";
+    }
     
     for(var i = 0; i < 5; i++){
         input = document.getElementById("letter"+row+"-"+i);
@@ -45,8 +46,9 @@ function check(){
             input.style.backgroundColor = "green";
             input.style.borderRadius = "0px";
             text.innerHTML = "";
-            input.innerText = guessWord[i];
-            guessWord2[i] = null;
+            input.innerHTML = guessWord2[i];
+            split[i] = null;
+            guessWord[i] = null;
             console.log(guessWord2[i]);
         }
 
@@ -54,7 +56,6 @@ function check(){
             input.style.backgroundColor = "yellow";
             input.style.borderRadius = "30px";
             text.innerHTML = "";
-            console.log("hallo")
         }
     }
 
