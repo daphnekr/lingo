@@ -47,8 +47,8 @@ function check(){
             input.style.borderRadius = "0px";
             text.innerHTML = "";
             input.innerHTML = guessWord2[i];
-            split[i] = null;
             guessWord[i] = null;
+            split[i] = null;
             console.log(guessWord2[i]);
         }
 
