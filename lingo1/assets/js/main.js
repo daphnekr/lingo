@@ -51,13 +51,16 @@ function check(){
             split[i] = null;
             console.log(guessWord2[i]);
         }
-
+    }
+    for(var i = 0; i < 5; i++){
         if(split.indexOf(guessWord2[i]) != -1){
             input.style.backgroundColor = "yellow";
             input.style.borderRadius = "30px";
             text.innerHTML = "";
         }
     }
+
+
 
     var checkWord = 0;
 
